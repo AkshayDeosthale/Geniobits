@@ -23,6 +23,12 @@ import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import { Badge } from "@mui/material";
 import Content from "./Content";
 
+import WidgetsIcon from "@mui/icons-material/Widgets";
+import PeopleIcon from "@mui/icons-material/People";
+import HomeIcon from "@mui/icons-material/Home";
+import SettingsIcon from "@mui/icons-material/Settings";
+import LogoutIcon from "@mui/icons-material/Logout";
+
 const drawerWidth = 240;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
@@ -73,16 +79,8 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 export default function DrawerContainer() {
-  const theme = useTheme();
   const [open, setOpen] = React.useState(true);
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+  const [selected, setselected] = React.useState("My App");
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -153,9 +151,18 @@ export default function DrawerContainer() {
         >
           <List>
             {["My App", "Resources"].map((text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>{<MailIcon />}</ListItemIcon>
+              <ListItem
+                key={text}
+                disablePadding
+                sx={{
+                  borderLeft: selected === text && 7,
+                  borderColor: "orange",
+                }}
+              >
+                <ListItemButton onClick={() => setselected(text)}>
+                  <ListItemIcon>
+                    {text === "My App" ? <WidgetsIcon /> : <PeopleIcon />}
+                  </ListItemIcon>
                   <ListItemText primary={text} />
                 </ListItemButton>
               </ListItem>
@@ -163,9 +170,24 @@ export default function DrawerContainer() {
           </List>
           <List>
             {["My Organization", "Setting", "Log out"].map((text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>{<MailIcon />}</ListItemIcon>
+              <ListItem
+                key={text}
+                disablePadding
+                sx={{
+                  borderLeft: selected === text && 7,
+                  borderColor: "orange",
+                }}
+              >
+                <ListItemButton onClick={() => setselected(text)}>
+                  <ListItemIcon>
+                    {text === "My Organization" ? (
+                      <HomeIcon />
+                    ) : text === "Setting" ? (
+                      <SettingsIcon />
+                    ) : (
+                      <LogoutIcon />
+                    )}
+                  </ListItemIcon>
                   <ListItemText primary={text} />
                 </ListItemButton>
               </ListItem>

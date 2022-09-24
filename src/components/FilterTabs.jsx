@@ -23,7 +23,7 @@ export default function IconTabs() {
       sx={{
         minHeight: 0,
         padding: 1,
-        backgroundColor: "gray",
+        backgroundColor: "#D3D3D3",
         borderRadius: "10px",
         ".Mui-selected": {
           border: "none",
@@ -45,7 +45,7 @@ export default function IconTabs() {
           minHeight: 0,
           margin: 0,
           px: 6,
-          py: 0,
+          py: 1,
         }}
       />
       <Tab
@@ -57,7 +57,7 @@ export default function IconTabs() {
           minHeight: 0,
           margin: 0,
           px: 6,
-          py: 0,
+          py: 1,
         }}
       />
     </Tabs>
